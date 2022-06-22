@@ -1,4 +1,4 @@
-# DevConf Demo - Automatically adjust requests / limits when Apps are OOMKilled
+# KCD22 Demo - Predictive Autoscaling Patterns in Kubernetes
 
 ## Without VPA
 
@@ -55,7 +55,7 @@ On the other hand, we used the stress image, and as in the [Image Stress Documen
 
 ```md
 - -m, --vm N: spawn N workers spinning on malloc()/free()
-- --vm-bytes B: malloc B bytes per vm worker (default is 256MB) 
+- --vm-bytes B: malloc B bytes per vm worker (default is 256MB)
 ```
 
 So we defined 250M of memory allocation by the stress process, that's more than the limits of the container is defined, exceeding the Container's memory limit, and this will produce an OOMKilled.
@@ -123,7 +123,7 @@ On the other hand, we used the stress image, and as in the [Image Stress Documen
 
 ```md
 - -m, --vm N: spawn N workers spinning on malloc()/free()
-- --vm-bytes B: malloc B bytes per vm worker (default is 256MB) 
+- --vm-bytes B: malloc B bytes per vm worker (default is 256MB)
 ```
 
 So we defined 150M of memory allocation by the stress process, that's it's between the request and limits defined.
@@ -302,7 +302,7 @@ So when you get a scaling recommendation, it will respect and keep the same rati
 8. The deployment of stress app is not changed at all, the VPA just is changing the Pod spec definition:
 
 ```
-oc get deployment stress -o yaml | egrep -i 'limits|request' -A1         
+oc get deployment stress -o yaml | egrep -i 'limits|request' -A1
          requests:
             memory: "100Mi"
           limits:
