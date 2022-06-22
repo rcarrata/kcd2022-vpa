@@ -14,6 +14,14 @@ After this session, you will understand the implementation details and the archi
 
 * [Demo Predictive Autoscaling Patterns in Kubernetes](docs/demo.md)
 
+* To run the demo:
+
+```sh
+bash assets/demo.sh
+```
+
+Enjoy! :)
+
 ## Slides
 
 * [Coming Soon!](docs/slides.pdf)
