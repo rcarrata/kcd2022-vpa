@@ -55,7 +55,7 @@ pe "kubectl get pods -n $PROJECT"
 pei ""
 
 pei "# Listing pod status"
-pe "kubectl describe pod | grep Reason:"
+pe "kubectl describe pod stress-novpa -n $PROJECT | grep Reason:"
 pei ""
 
 pe "clear"
@@ -63,6 +63,11 @@ pe "clear"
 pei "#################################"
 pei "# Deploying applications with VPA"
 pei "#################################"
+
+pei "# Check the VPA components in the k8s cluster"
+pe "kubectl get pod -n openshift-vertical-pod-autoscaler"
+pei ""
+PROMPT_TIMEOUT=2
 
 pei "# Set production namespace name"
 pe "PROJECT=test-vpa-kcd22"
@@ -113,7 +118,7 @@ pe "kubectl get pods -n $PROJECT"
 pei ""
 
 pei "# Describe the requests/limits on the application"
-pe "kubectl get pod -l app=stress -o yaml | grep -e limit -e requests -A1"
+pe "kubectl -n $PROJECT get pod -l app=stress -o yaml | grep -e limit -e requests -A1"
 pei ""
 
 pei "# VPA will use the metrics to adapt the application resources, let's check them"
@@ -148,7 +153,7 @@ EOF"
 pei ""
 
 pei "# Check the vpa status"
-PROMPT_TIMEOUT=18
+PROMPT_TIMEOUT=30
 wait
 pe "kubectl get vpa -n $PROJECT"
 PROMPT_TIMEOUT=2
@@ -159,18 +164,25 @@ pei ""
 pei "# The application is now limited by 200M in memory usage"
 pe "kubectl get pod -l app=stress -n $PROJECT -o yaml | grep limits -A1"
 pei ""
+PROMPT_TIMEOUT=2
 
 pei "# We are going to simulate how VPA is going to adjust the resources as long as the application uses more resources"
 pe """kubectl -n $PROJECT patch deployment stress --type='json' -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/args/3", "value": "250M" }]'"""
 pei ""
+PROMPT_TIMEOUT=2
 
 pei "# The VPA will notice this change and adapt the resources as needed."
 pe "kubectl -n $PROJECT get pod -l app=stress -o yaml | grep vpa -A1"
 pei ""
+PROMPT_TIMEOUT=2
 
 pei "# After the redeploy, you should see right values on the new pod"
 pe "kubectl -n $PROJECT get pod -l app=stress -o yaml | grep -e limit -e requests -A1"
 pei ''
+PROMPT_TIMEOUT=2
+
+pei "# VPA saves the day! My app is up && running without any OOMKilled or Crashloopbackoff status"
+pe "kubectl -n $PROJECT get pod -l app=stress"
 
 pei "##################################"
 pei "#           The End              #"
