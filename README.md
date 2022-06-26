@@ -13,9 +13,8 @@ After this session, you will understand the implementation details and the archi
 ## Run the Demo
 
 * Prerequisites: Install VPA in your k8s/OpenShift cluster
-
-- k8s: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#installation
-- OpenShift (with Operators): https://docs.openshift.com/container-platform/latest/nodes/pods/nodes-pods-vertical-autoscaler.html
+  - k8s: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#installation
+  - OpenShift (with Operators): https://docs.openshift.com/container-platform/latest/nodes/pods/nodes-pods-vertical-autoscaler.html
 
 * Run the demo:
 
