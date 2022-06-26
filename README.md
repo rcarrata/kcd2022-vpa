@@ -10,21 +10,31 @@ We will analyze the best practices and deployment patterns to include in an easy
 
 After this session, you will understand the implementation details and the architecture highlights, freeing your developers from the necessity of setting up-to-date resource limits and requests for the containers in their pods allowing them to focus on their business application development, making possible scale applications in a predictive and efficient way.
 
-## Demo
+## Run the Demo
 
-* [Demo Predictive Autoscaling Patterns in Kubernetes](docs/demo.md)
+* Prerequisites: Install VPA in your k8s/OpenShift cluster
 
-* To run the demo:
+- k8s: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#installation
+- OpenShift (with Operators): https://docs.openshift.com/container-platform/latest/nodes/pods/nodes-pods-vertical-autoscaler.html
+
+* Run the demo:
 
 ```sh
+git clone https://github.com/rcarrata/kcd2022-vpa.git
 bash assets/demo.sh
 ```
 
 Enjoy! :)
 
+# Demo Walkthrough
+
+If you want to sneak peak the demo without running it in your k8s cluster, check out this walkthrough:
+
+* [Demo Predictive Autoscaling Patterns in Kubernetes Walkthrough](docs/demo.md)
+
 ## Slides
 
-* [Coming Soon!](docs/slides.pdf)
+* [KCD22Berlin Slides](https://es.slideshare.net/RobertoCarratalaSanc1/kcd2022-predictive-autoscaling-patterns-in-k8spdf-252062444)
 
 ## Contributors / Maintainers
 
