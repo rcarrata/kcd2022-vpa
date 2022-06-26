@@ -1,6 +1,6 @@
 # Kubernetes Community Days Berlin 2022 - Predictive Autoscaling Patterns in Kubernetes
 
-* [**DevConf Session - Predictive Autoscaling Patterns in Kubernetes**](https://community.cncf.io/events/details/cncf-kcd-berlin-presents-kubernetes-community-days-berlin-2022-1/#event-info)
+* [**KCD22 Session - Predictive Autoscaling Patterns in Kubernetes**](https://community.cncf.io/events/details/cncf-kcd-berlin-presents-kubernetes-community-days-berlin-2022-1/#event-info)
 
 ## Abstract
 
