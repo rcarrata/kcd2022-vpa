@@ -198,7 +198,7 @@ stress-vpa   Auto   1     262144k   True       81s
 ```
 
 ```sh
-oc get vpa hamster-vpa -o jsonpath='{.status}' | jq -r .
+oc get vpa stress-vpa -o jsonpath='{.status}' | jq -r .
 {
   "conditions": [
     {
